@@ -19,6 +19,13 @@
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
+		
+		<style>
+		b {
+			text-transform: uppercase;
+			text-decoration: underline;
+		}
+		</style>
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -40,23 +47,234 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section>
-					<h1>Exploring /proc with Friends</h1>
+				<section data-background="http://0f7e4b6f48f01603dbf0-798ceaca68548b7d94e5a0f7efc280b5.r85.cf5.rackcdn.com/LFNW_SlideDeck_2016-1.png">
+				</section>
+				<section data-background="http://0f7e4b6f48f01603dbf0-798ceaca68548b7d94e5a0f7efc280b5.r85.cf5.rackcdn.com/forest-bg.jpg">
+					<h1 style="text-shadow: 5px 5px #000000;">Exploring /proc with Friends</h1>
 					<p>
 						<small>Created by <a href="http://unsupported.io/about-alex" target="_blank">Alex Juarez</a> / <a href="http://twitter.com/mralexjuarez" target="_blank">@mralexjuarez</a></small>
 					</p>
 				</section>
-				
-				<section>
-					<img src="assets/images/zelda.jpg" alt="" />
-				</section>
 
 				<section>
-					<h2></h2>
-					<p></p>
+					<h2>Hello</h2>
 				</section>
 				
+				<section>
+					<h2>Thank You</h2>
+				</section>
 				
+				<section>
+					<h2>Agenda</h2>
+					<ul>
+						<li>So why this topic?</li>
+						<li>My favorite Interview Question</li>
+						<li>What is the /proc filesystem?</li>
+						<li>System wide /proc files</li>
+						<li>Exploring the PID forrest</li>
+						<li>Interacting with /proc</li>
+						<li>Extras</li>
+					</ul>
+				</section>
+<!-- /*******************/ Section /*******************/ -->
+				<section>
+					<h2>Why this topic?</h2>
+				</section>
+				
+				<section>
+					<h2>But first! History</h2>
+					<ul>
+						<li>1st Written 1984 - 8th Ed. Unix</li>
+						<li>1992 - Plan 9 restructures layout</li>
+						<li>1992 - Solaris and Linux follow suite</li>
+						<li>1996 - Full implmentation in Solaris</li>
+					</ul>
+				</section>
+				
+				<section>
+					<p>Knowing is not understanding. There is a great difference between knowing and understanding: you can know a lot about something and not really understand it.<br/>- Charles Kettering</p>
+				</section>
+<!-- /*******************/ Section /*******************/ -->
+				<section>
+					<h2>My Favorite Interview Question</h2>
+					<hr/>
+					<h3>Let's start with a demo</h3>
+				</section>
+				
+				<section>
+					<h2>Setting the Scene</h2>
+					<p>You are working away on a configuration and accidently delete a number of open log files currently in use.</p>
+					<img src="img/ahh.jpg" alt="" /	>
+				</section>
+				
+				<section>
+					<h2>Why is this my favorite?</h2>
+				</section>
+				
+				<section>
+					<h2>It's rare anybody solves this question right away.</h2>
+					<p>But when they do....</p>
+				</section>
+				
+				<section>
+					<h2>There is always a story.</h2>
+					<img src="img/story.jpg" alt="" />
+				</section>
+				
+				<section>
+					<h2>Demo Time!</h2>
+					<img src="img/clobberin-time.jpg" alt="" />
+				</section>
+				
+<!-- /*******************/ Section /*******************/ -->				
+				<section>
+					<h2>What is the proc filesystem?</h2>
+				</section>
+				
+					<section>
+						<h2>/proc</h2>
+						<p>A pseudo filesystem that acts as an interface to the kernel. It gives us real-time access to stats as well as the abality to change some tuneables.</p>
+					</section>
+					
+					<section>
+						<img src="assets/images/not-real.jpg" alt="" />
+					</section>
+					
+					<section>
+						<h2>Not buying it?</h2>
+						<ul>
+							<li>Files in /proc are virtual files</li>
+							<li>Files containing a fair amount of data will show up as a Zero byte size.</li>
+							<li>Most of them will have the same current timestamp</li>
+						</ul>
+						<pre># watch stat /proc/cpuinfo</pre>
+					</section>
+<!-- /*******************/ Section /*******************/ -->				
+				<section>
+					<h2>Top-Level /proc files</h2>
+					<img src="img/top-level.png" alt="" />
+				</section>
+				
+				<section>
+					<h2>Top-Level /proc files</h2>
+					<p>Let's go over some of the useful top-level files.</p>
+				</section>
+				
+				<section>
+					<h2>/proc/cmdline</h2>
+					<p>Information about the arguments passed to the kernel at boot time.</p>
+					<img src="img/proc-cmdline.png" alt="" />
+					<p><b>Useful When:</b> You need to know if the recent changes to grub.conf have been implemented or not.</p>
+				</section>
+				
+				<section>
+					<h2>/proc/cpuinfo</h2>
+					<p>Information about the cpu(s) on the system.</p>
+					<p><b>Useful When:</b> You need to verify what you bought is what you actually have.</p>
+				</section>
+				
+				<section>
+					<h2>/proc/cpuinfo</h2>
+					<img src="img/proc-cpuinfo.png" alt="" />
+				</section>
+					
+				<section>
+					<h2>/proc/loadavg</h2>
+					<p>Used by many programs to display the 1, 5 and 15 minute load averages. It also goes further showing the currently running processes / total possible entieis for CPU time. Lastly it shows the PID of the last process exected by the system.</p>
+					<img src="img/proc-loadavg.png" alt="" />
+				</section>
+				
+<!-- /*******************/ Section /*******************/ -->				
+				<section>
+					<h2>Exploring the PID forrest</h2>
+					<hr/>
+					<h3>Each process has it's own story</h3>
+				</section>
+				<section>
+					<h2>Exploring the PID forrest</h2>
+					<p>For each process there is a directory under /proc that correspodonds to the processes PID.</p>
+				</section>
+				<section>
+					<h2>/proc/&lt;PID&gt;/cmdline</h2>
+					<p>This file contains the command line for the process.</p>
+					<p><b>Useful When: </b>A process looks suspicious in the output of common tools.</p>
+				</section>
+				<section>
+					<h2>/proc/&lt;PID&gt;/environ</h2>
+					<p>This file contains the processes environment varibles.</p>
+					<p><b>Useful When:</b> You think environment variables might not be passed or available.</p>
+				</section>
+				<section>
+					<h2>/proc/&lt;PID&gt;/fd/*</h2>
+					<p>This directory contains symbolic links to open files.</p>
+					<p><b>Useful When:</b> You need to see if a file is being used or need to attempt to recover a file.</p>
+				</section>
+				<section>
+					<h3>/proc/&lt;PID&gt;/oom_adj</h3>
+					<h3>/proc/&lt;PID&gt;/oom_score</h3>
+					<p>These files determine how likely it is a process will be killed off by OOM-Killer (Out-of-Memory Killer)</p>
+					<p>oom_adj is one of the files we can adjust per-process from the range of -16 to 15 with the lower numbers being the lest likely to be killed off.</p>
+				</section>		
+<!-- /*******************/ Section /*******************/ -->				
+				<section>
+					<h2>Interacting with /proc</h2>
+				</section>
+				
+				<section>
+					<h2>Getting the PID of a process</h2>
+					<ul>
+						<li><pre># pgrep -uroot httpd</pre>Use pgrep to get any httpd processes run by root</li>
+						<li><pre># pidof httpd</pre>Get all PIDs associated with the httpd process</li>
+						<li><pre># cat /proc/self/cmdline</pre>/proc/self refers to the currently executing process</li>
+						<li><pre># cat /proc/$$/cmdline</pre>$$ is a bash variable for PID</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Tuning kernel parameters /proc/sys</h2>
+					<p>Files under /proc/sys are unique because they expose the kernel tunables</p>
+				</section>
+				<section>
+					<h2>All the Tuneables</h2>
+					<pre><b style="text-transform:lowercase;"># sysctl -a</b>
+kernel.sched_child_runs_first = 0
+kernel.sched_min_granularity_ns = 1000000
+kernel.sched_latency_ns = 5000000
+kernel.sched_wakeup_granularity_ns = 1000000
+kernel.sched_tunable_scaling = 1
+kernel.sched_features = 3183
+kernel.sched_migration_cost = 500000
+kernel.sched_nr_migrate = 32
+kernel.sched_time_avg = 1000
+kernel.sched_shares_window = 10000000
+kernel.timer_migration = 1
+kernel.sched_rt_period_us = 1000000
+kernel.sched_rt_runtime_us = 950000
+kernel.sched_compat_yield = 0
+kernel.sched_rr_timeslice_ms = 100
+kernel.sched_autogroup_enabled = 0
+kernel.sched_cfs_bandwidth_slice_us = 5000
+kernel.panic = 0
+...</pre>
+				</section>
+				<section>
+					<h2>The kernel tunables</h2>
+					<p>A kernel tunable</p>
+					<pre>net.ipv4.icmp_echo_ignore_all = 1</pre>
+					<p>The path</p>
+					<pre>cat /proc/sys/net/ipv4/icmp_echo_ignore_all</pre>
+				</section>
+				<section>
+					<h2>Changing values in /proc/sys</h2>
+					<p>A kernel tunable</p>
+					<pre>echo 1 > /proc/sys/net/ipv4/icmp_echo_ignore_all</pre>
+					<p>The path</p>
+					<pre>sysctl -a | grep icmp_echo_ignore_all >> /etc/sysctl.conf</pre>
+				</section>
+<!-- /*******************/ Section /*******************/ -->				
+				<section>
+					<h2>Extras</h2>
+				</section>
+<!-- /*******************/ Section /*******************/ -->				
 				<section>
 					<h2>In Closing...</h2>
 				</section>
@@ -76,13 +294,15 @@
                    <small>Thanks <a href="https://twitter.com/jilljubs">@jilljubs</a></small>
                  </section>
 
-                 <section>
-                   <h2>Q &amp; A</h2>
-                   <h6>(Or we can talk about Whiskey)</h6>
-                   <img src="http://slides.unsupported.io/explore-strace/images/whiskey.jpg" alt="" style="border:0px;"/>
-                 </section>
+				<section>
+	                   <h2>Q &amp; A</h2>
+	                   <h6>(Or we can talk about Whiskey)</h6>
+	                   <img src="http://0f7e4b6f48f01603dbf0-798ceaca68548b7d94e5a0f7efc280b5.r85.cf5.rackcdn.com/whiskey.jpg" alt="" style="border:0px;"/>
+	                 </section>
 
                </section>
+			<section data-background="http://0f7e4b6f48f01603dbf0-798ceaca68548b7d94e5a0f7efc280b5.r85.cf5.rackcdn.com/LFNW_SlideDeck_2016-2.png">
+			</section>
 			</div>
 				
 		</div>
