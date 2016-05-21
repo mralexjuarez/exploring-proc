@@ -47,8 +47,6 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section data-background="http://0f7e4b6f48f01603dbf0-798ceaca68548b7d94e5a0f7efc280b5.r85.cf5.rackcdn.com/LFNW_SlideDeck_2016-1.png">
-				</section>
 				<section data-background="http://0f7e4b6f48f01603dbf0-798ceaca68548b7d94e5a0f7efc280b5.r85.cf5.rackcdn.com/forest-bg.jpg">
 					<h1 style="text-shadow: 5px 5px #000000;">Exploring /proc with Friends</h1>
 					<p>
@@ -73,7 +71,8 @@
 						<li>System wide /proc files</li>
 						<li>Exploring the PID forrest</li>
 						<li>Interacting with /proc</li>
-						<li>Extras</li>
+						<li>Extended Learning</li>
+						<li>Q/A</li>
 					</ul>
 				</section>
 <!-- /*******************/ Section /*******************/ -->
@@ -210,10 +209,17 @@
 					<p><b>Useful When:</b> You need to see if a file is being used or need to attempt to recover a file.</p>
 				</section>
 				<section>
-					<h3>/proc/&lt;PID&gt;/oom_adj</h3>
+					<h2>proc/&lt;PID&gt;/{maps/smaps}</h2>
+					<p>These files report on a processes memory usage.</p>
+					<ul>
+						<li>maps - Information about the mapped memory regions</li>
+						<li>smaps - An extension of maps showing more details about the mapping</li>
+				</section>
+				<section>
+					<h3>/proc/&lt;PID&gt;/oom_score_adj</h3>
 					<h3>/proc/&lt;PID&gt;/oom_score</h3>
 					<p>These files determine how likely it is a process will be killed off by OOM-Killer (Out-of-Memory Killer)</p>
-					<p>oom_adj is one of the files we can adjust per-process from the range of -16 to 15 with the lower numbers being the lest likely to be killed off.</p>
+					<p>oom_adj is one of the files we can adjust per-process from the range of -1000 to 1000 with the lower numbers being the lest likely to be killed off.</p>
 				</section>		
 <!-- /*******************/ Section /*******************/ -->				
 				<section>
@@ -272,7 +278,8 @@ kernel.panic = 0
 				</section>
 <!-- /*******************/ Section /*******************/ -->				
 				<section>
-					<h2>Extras</h2>
+					<h2>Extended Learning</h2>
+					<p>Idea: Use strace to deconstruct common programs reading from /proc. Use the information to re-build common tools.</p>
 				</section>
 <!-- /*******************/ Section /*******************/ -->				
 				<section>
@@ -301,8 +308,11 @@ kernel.panic = 0
 	                 </section>
 
                </section>
-			<section data-background="http://0f7e4b6f48f01603dbf0-798ceaca68548b7d94e5a0f7efc280b5.r85.cf5.rackcdn.com/LFNW_SlideDeck_2016-2.png">
-			</section>
+			   
+			   <section>
+				   <h2>Evaluation this Session</h2>
+				   <a href="http://goo.gl/forms/ZZrs3PKKXEwelCCc2">http://goo.gl/forms/ZZrs3PKKXEwelCCc2</a>
+			  </section>
 			</div>
 				
 		</div>
