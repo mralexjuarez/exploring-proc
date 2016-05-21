@@ -148,6 +148,11 @@
 						</ul>
 						<pre># watch stat /proc/cpuinfo</pre>
 					</section>
+					<section>
+						<h2>Documentation</h2>
+						<p>We all stand on the shoulders of giants.</p>
+						<a href="https://www.kernel.org/doc/Documentation/filesystems/proc.txt" target="_blank">https://www.kernel.org/doc/Documentation/filesystems/proc.txt</a>
+					</section>
 <!-- /*******************/ Section /*******************/ -->				
 				<section>
 					<h2>Top-Level /proc files</h2>
@@ -169,7 +174,7 @@
 				<section>
 					<h2>/proc/cpuinfo</h2>
 					<p>Information about the cpu(s) on the system.</p>
-					<p><b>Useful When:</b> You need to verify what you bought is what you actually have.</p>
+					<p><b>Useful When:</b> You need to see the flags your CPU offers up i.e. Can we do virtualization?</p>
 				</section>
 				
 				<section>
@@ -209,8 +214,15 @@
 					<p><b>Useful When:</b> You need to see if a file is being used or need to attempt to recover a file.</p>
 				</section>
 				<section>
-					<h2>proc/&lt;PID&gt;/{maps/smaps}</h2>
+					<h2>proc/&lt;PID&gt;/{maps,smaps}</h2>
 					<p>These files report on a processes memory usage.</p>
+					<ul>
+						<li>maps - Information about the mapped memory regions</li>
+						<li>smaps - An extension of maps showing more details about the mapping</li>
+				</section>
+				<section>
+					<h2>proc/&lt;PID&gt;/{stat,status}</h2>
+					<p>Both stat and status give the status of the process with status being a bit more human readable.</p>
 					<ul>
 						<li>maps - Information about the mapped memory regions</li>
 						<li>smaps - An extension of maps showing more details about the mapping</li>
