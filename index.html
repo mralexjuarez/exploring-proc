@@ -55,14 +55,6 @@
 				</section>
 
 				<section>
-					<h2>Hello</h2>
-				</section>
-				
-				<section>
-					<h2>Thank You</h2>
-				</section>
-				
-				<section>
 					<h2>Agenda</h2>
 					<ul>
 						<li>So why this topic?</li>
@@ -77,10 +69,6 @@
 				</section>
 <!-- /*******************/ Section /*******************/ -->
 				<section>
-					<h2>Why this topic?</h2>
-				</section>
-				
-				<section>
 					<h2>But first! History</h2>
 					<ul>
 						<li>1st Written 1984 - 8th Ed. Unix</li>
@@ -91,8 +79,9 @@
 				</section>
 				
 				<section>
-					<p>Knowing is not understanding. There is a great difference between knowing and understanding: you can know a lot about something and not really understand it.<br/>- Charles Kettering</p>
+					<h2>Why this topic?</h2>
 				</section>
+				
 <!-- /*******************/ Section /*******************/ -->
 				<section>
 					<h2>My Favorite Interview Question</h2>
@@ -117,7 +106,6 @@
 				
 				<section>
 					<h2>There is always a story.</h2>
-					<img src="img/story.jpg" alt="" />
 				</section>
 				
 				<section>
@@ -136,6 +124,7 @@
 					</section>
 					
 					<section>
+						<h2>A pseudo filesystem</h2>
 						<img src="assets/images/not-real.jpg" alt="" />
 					</section>
 					
@@ -168,7 +157,8 @@
 					<h2>/proc/cmdline</h2>
 					<p>Information about the arguments passed to the kernel at boot time.</p>
 					<img src="img/proc-cmdline.png" alt="" />
-					<p><b>Useful When:</b> You need to know if the recent changes to grub.conf have been implemented or not.</p>
+					<p><u>Because:</u> Have you seen the grub2.cfg file?</p>
+					
 				</section>
 				
 				<section>
@@ -184,8 +174,12 @@
 					
 				<section>
 					<h2>/proc/loadavg</h2>
-					<p>Used by many programs to display the 1, 5 and 15 minute load averages. It also goes further showing the currently running processes / total possible entieis for CPU time. Lastly it shows the PID of the last process exected by the system.</p>
 					<img src="img/proc-loadavg.png" alt="" />
+					<ul>
+						<li>1,5 and 15 Minute Averages</li>
+						<li>Current Running Process / Possible Entities</li>
+						<li>The last PID assigned out</li>
+					</ul>
 				</section>
 				
 <!-- /*******************/ Section /*******************/ -->				
@@ -196,7 +190,7 @@
 				</section>
 				<section>
 					<h2>Exploring the PID forrest</h2>
-					<p>For each process there is a directory under /proc that correspodonds to the processes PID.</p>
+					<p>For each process there is a directory under /proc that corresponds to the processes PID.</p>
 				</section>
 				<section>
 					<h2>/proc/&lt;PID&gt;/cmdline</h2>
@@ -205,7 +199,7 @@
 				</section>
 				<section>
 					<h2>/proc/&lt;PID&gt;/environ</h2>
-					<p>This file contains the processes environment varibles.</p>
+					<p>This file contains the processes environment variables.</p>
 					<p><b>Useful When:</b> You think environment variables might not be passed or available.</p>
 				</section>
 				<section>
@@ -224,8 +218,8 @@
 					<h2>proc/&lt;PID&gt;/{stat,status}</h2>
 					<p>Both stat and status give the status of the process with status being a bit more human readable.</p>
 					<ul>
-						<li>maps - Information about the mapped memory regions</li>
-						<li>smaps - An extension of maps showing more details about the mapping</li>
+						<li>stat - Not easy to read</li>
+						<li>status - Somewhat easier to read</li>
 				</section>
 				<section>
 					<h3>/proc/&lt;PID&gt;/oom_score_adj</h3>
@@ -249,7 +243,7 @@
 				</section>
 				<section>
 					<h2>Tuning kernel parameters /proc/sys</h2>
-					<p>Files under /proc/sys are unique because they expose the kernel tunables</p>
+					<p>Files under /proc/sys are unique because they expose the kernel variables which are tunable</p>
 				</section>
 				<section>
 					<h2>All the Tuneables</h2>
