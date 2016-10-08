@@ -58,11 +58,11 @@
 					<h2>Agenda</h2>
 					<ul>
 						<li>So why this topic?</li>
-						<li>My favorite Interview Question</li>
 						<li>What is the /proc filesystem?</li>
 						<li>System wide /proc files</li>
 						<li>Exploring the PID forrest</li>
 						<li>Interacting with /proc</li>
+						<li>My favorite Interview Question</li>
 						<li>Extended Learning</li>
 						<li>Q/A</li>
 					</ul>
@@ -73,44 +73,13 @@
 					<ul>
 						<li>1st Written 1984 - 8th Ed. Unix</li>
 						<li>1992 - Plan 9 restructures layout</li>
-						<li>1992 - Solaris and Linux follow suite</li>
-						<li>1996 - Full implmentation in Solaris</li>
+						<li>1992 - Solaris and Linux follow along</li>
+						<li>1996 - Full implementation in Solaris</li>
 					</ul>
 				</section>
 				
 				<section>
 					<h2>Why this topic?</h2>
-				</section>
-				
-<!-- /*******************/ Section /*******************/ -->
-				<section>
-					<h2>My Favorite Interview Question</h2>
-					<hr/>
-					<h3>Let's start with a demo</h3>
-				</section>
-				
-				<section>
-					<h2>Setting the Scene</h2>
-					<p>You are working away on a configuration and accidently delete a number of open log files currently in use.</p>
-					<img src="img/ahh.jpg" alt="" /	>
-				</section>
-				
-				<section>
-					<h2>Why is this my favorite?</h2>
-				</section>
-				
-				<section>
-					<h2>It's rare anybody solves this question right away.</h2>
-					<p>But when they do....</p>
-				</section>
-				
-				<section>
-					<h2>There is always a story.</h2>
-				</section>
-				
-				<section>
-					<h2>Demo Time!</h2>
-					<img src="img/clobberin-time.jpg" alt="" />
 				</section>
 				
 <!-- /*******************/ Section /*******************/ -->				
@@ -129,7 +98,7 @@
 					</section>
 					
 					<section>
-						<h2>Not buying it?</h2>
+						<h2>So what does this mean?</h2>
 						<ul>
 							<li>Files in /proc are virtual files</li>
 							<li>Files containing a fair amount of data will show up as a Zero byte size.</li>
@@ -149,21 +118,19 @@
 				</section>
 				
 				<section>
-					<h2>Top-Level /proc files</h2>
-					<p>Let's go over some of the useful top-level files.</p>
+					<h3>So we are on a new (to us) server.</h3>
+					<p>Lets find out about it.</p>
 				</section>
 				
 				<section>
-					<h2>/proc/cmdline</h2>
-					<p>Information about the arguments passed to the kernel at boot time.</p>
+					<h3>Anything funky about the way it was booted?</h3>
+					<p><em>/proc/cmdline </em>shows us arguments passed to the kernel at boot time.</p>
 					<img src="img/proc-cmdline.png" alt="" />
-					<p><u>Because:</u> Have you seen the grub2.cfg file?</p>
-					
 				</section>
 				
 				<section>
-					<h2>/proc/cpuinfo</h2>
-					<p>Information about the cpu(s) on the system.</p>
+					<h2>How many CPUs do we have?</h2>
+					<p><em>/proc/cpuinfo</em> can show you the cpu(s) on the system.</p>
 					<p><b>Useful When:</b> You need to see the flags your CPU offers up i.e. Can we do virtualization?</p>
 				</section>
 				
@@ -173,7 +140,7 @@
 				</section>
 					
 				<section>
-					<h2>/proc/loadavg</h2>
+					<h2>Is this box busy?</h2>
 					<img src="img/proc-loadavg.png" alt="" />
 					<ul>
 						<li>1,5 and 15 Minute Averages</li>
@@ -235,10 +202,10 @@
 				<section>
 					<h2>Getting the PID of a process</h2>
 					<ul>
-						<li><pre># pgrep -uroot httpd</pre>Use pgrep to get any httpd processes run by root</li>
-						<li><pre># pidof httpd</pre>Get all PIDs associated with the httpd process</li>
-						<li><pre># cat /proc/self/cmdline</pre>/proc/self refers to the currently executing process</li>
-						<li><pre># cat /proc/$$/cmdline</pre>$$ is a bash variable for PID</li>
+						<li>Use pgrep to get any httpd processes run by root<pre># pgrep -uroot httpd</pre></li>
+						<li>Get all PIDs associated with the httpd process<pre># pidof httpd</pre></li>
+						<li>/proc/self refers to the currently executing process<pre># cat /proc/self/cmdline</pre></li>
+						<li>$$ is a bash variable for PID<pre># cat /proc/$$/cmdline</pre></li>
 					</ul>
 				</section>
 				<section>
@@ -281,6 +248,26 @@ kernel.panic = 0
 					<pre>echo 1 > /proc/sys/net/ipv4/icmp_echo_ignore_all</pre>
 					<p>The path</p>
 					<pre>sysctl -a | grep icmp_echo_ignore_all >> /etc/sysctl.conf</pre>
+				</section>
+<!-- /*******************/ Section /*******************/ -->
+				<section>
+					<h2>My Favorite Interview Question</h2>
+					<hr/>
+					<h3>Let's start with a demo</h3>
+				</section>
+				
+				<section>
+					<h2>Setting the Scene</h2>
+					<p>You are working away on a configuration and accidently delete a number of open log files currently in use.</p>
+					<img src="img/ahh.jpg" alt="" /	>
+				</section>
+				
+				<section>
+					<h2>Why is this my favorite?</h2>
+				</section>
+				
+				<section>
+					<h2>Demo Time!</h2>
 				</section>
 <!-- /*******************/ Section /*******************/ -->				
 				<section>
